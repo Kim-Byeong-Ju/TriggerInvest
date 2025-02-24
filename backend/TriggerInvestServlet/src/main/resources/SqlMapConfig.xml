@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration
+        PUBLIC "-//mybatis.org/DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd" >
+<configuration>
+    <!-- JDBC Driver 클래스와 데이터베이스 연결 설정 -->
+    <!-- 이 연결 설정에 대한 내용은 XML 안에 직접 작성하지 않아요!
+         별도의 외부 파일에 작성해서 해당 파일을 property로
+         가져와서 사용해요!-->
+    <properties resource="./driver.properties" />
+
+    <!-- MyBatis 실행 설정 -->
+    <!-- 상당히 많은 설정이 있지만 대부분 default 설정을 이용  -->
+    <settings>
+        <setting name="jdbcTypeForNull" value="NULL"/>
+    </settings>
+
+    <!-- TypeAlias가 나올 수 있음 -->
+    <!-- 일반적으로 VO에 대한 alias 설정 -->
+    <typeAliases>
+<!--        <typeAlias alias="Board" type="org.example.servletloginboard.vo.BoardVO" />-->
+    </typeAliases>
+
+    <!-- DB 연결 정보 -->
+    <environments default="development">
+        <environment id="development">
+            <!-- transactionManager를 JDBC로 설정하면
+            수동으로 transaction을 설정한다는 의미.
+            commit(), rollback()을 코드에서 제어
+            만약 type이 MANAGED로 설정하면 자동으로 transaction을
+            제어하게 할 수 있음
+            -->
+            <transactionManager type="JDBC" />
+            <!-- connection pool을 사용할지 여부를 설정 -->
+            <dataSource type="POOLED">
+                <property name="driver" value="${db.driver}"/>
+                <property name="url" value="${db.url}"/>
+                <property name="username" value="${db.username}"/>
+                <property name="password" value="${db.password}"/>
+            </dataSource>
+        </environment>
+    </environments>
+    <!-- SQL 구문을 작성하는 mapper라는 xml 파일의 경로를 지정 -->
+    <mappers>
+<!--        <mapper resource="./sqlmap/Board.xml" />-->
+    </mappers>
+</configuration>

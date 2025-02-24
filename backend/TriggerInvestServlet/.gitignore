@@ -36,3 +36,6 @@ build/
 
 ### Mac OS ###
 .DS_Store
+
+## 설정 파일
+driver.properties
