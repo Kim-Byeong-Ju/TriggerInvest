@@ -8,8 +8,11 @@ function StockDetailPage() {
     const { stockCode } = useParams();
     const { data } = useFetchStockData(stockCode);
 
+    // Chart
     const [stockData, setStockData] = useState(null);
     const [volumeData, setVolumeData] = useState(null);
+
+    // In
 
     useEffect(() => {
         if (!data) return;
