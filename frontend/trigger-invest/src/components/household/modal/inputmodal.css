@@ -12,10 +12,11 @@
 }
 
 .modal-content {
+  position: relative;
   background-color: #fff;
   padding: 60px;
   border-radius: 10px;
-  width: 300px;
+  width: 400px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
 }
 
@@ -32,13 +33,25 @@
 
 .modal-content input,
 .modal-content select {
-  width: 100%;
+  width: 90%;
   padding: 8px;
   margin-top: 5px;
   border-radius: 4px;
   border: 1px solid #ccc;
 }
-
+.next-button {
+  display: flex;
+  justify-content: right;
+  margin-top: 20px;
+}
+.next-button button {
+  padding: 8px 12px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
 .modal-actions {
   display: flex;
   justify-content: space-between;
@@ -83,4 +96,19 @@
   background-color: #007bff;
   color: white;
   border-color: #0056b3;
+}
+.close-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  color: #666;
+  transition: color 0.3s ease;
+}
+
+.close-button:hover {
+  color: #333;
 }

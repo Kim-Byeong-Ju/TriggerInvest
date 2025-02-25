@@ -108,7 +108,7 @@ const InputModal = ({ show, handleClose, handleSave }) => {
                   required
                 />
               </label>
-              <div className="modal-actions">
+              <div className="next-button">
                 <button type="button" onClick={handleNext}>
                   다음
                 </button>
