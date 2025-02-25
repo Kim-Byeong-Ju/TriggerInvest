@@ -5,6 +5,8 @@ import HouseholdPage from './pages/HouseholdPage';
 import StockRecommendPage from './pages/StockRecommendPage';
 import StockDetailPage from './pages/StockDetailPage';
 
+import './axiosMock';
+
 function App() {
   return (
     <div id="app">
