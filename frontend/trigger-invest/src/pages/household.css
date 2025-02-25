@@ -1,0 +1,12 @@
+.household-page {
+  display: flex;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  height: 100vh; /* 화면 전체 높이 */
+  padding-bottom: 15%;
+}
+
+.household-page .calendar {
+  width: 80%; /* Calendar의 너비를 80%로 설정 */
+  height: 60%; /* Calendar의 높이를 60%로 설정 */
+}

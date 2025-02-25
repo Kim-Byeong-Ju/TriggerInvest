@@ -1,7 +1,12 @@
-function HouseholdPage () {
-    return (
-        <div>가계부 페이지</div>
-    );
+import Calendar from "../components/household/calendar/Calendar";
+function HouseholdPage() {
+  return (
+    <>
+      <div className="household-page">
+        <Calendar />
+      </div>
+    </>
+  );
 }
 
 export default HouseholdPage;
