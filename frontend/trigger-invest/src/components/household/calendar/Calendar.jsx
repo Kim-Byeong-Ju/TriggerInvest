@@ -15,6 +15,7 @@ function Calendar() {
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedEvents, setSelectedEvents] = useState([]);
   const [currentMonth, setCurrentMonth] = useState();
+  const [currentYear, setCurrentYear] = useState();
 
   // 날짜 클릭 시 해당 날짜의 이벤트 목록 모달 열기
   const handleDateClick = (info) => {
@@ -48,22 +49,34 @@ function Calendar() {
     setEvents((prevEvents) => [...prevEvents, newEvent]);
   };
 
-  // 2월 총 지출액 계산
   const totalExpense = useMemo(() => {
-    return events.reduce((sum, event) => {
-      const amount = parseInt(
-        event.title.split(" - ")[1]?.replace("원", ""),
-        10
-      );
-      return isNaN(amount) ? sum : sum + amount;
-    }, 0);
-  }, [events]);
+    return events
+      .filter((event) => {
+        const eventDate = new Date(event.date);
+        return (
+          (eventDate.getFullYear() === currentYear) &
+          (eventDate.getMonth() + 1 === currentMonth)
+        ); // 현재 선택된 월과 일치하는 이벤트만 필터링
+      })
+      .reduce((sum, event) => {
+        const amount = parseInt(
+          event.title.split(" - ")[1]?.replace("원", ""),
+          10
+        );
+        return isNaN(amount) ? sum : sum + amount;
+      }, 0);
+  }, [events, currentMonth]); // currentMonth가 변경될 때마다 계산되도록 의존성 추가
 
   // FullCalendar에서 view의 title 값 가져오기
   const handleViewRender = (view) => {
-    const endDate = view.end;
-    // 저장
-    setCurrentMonth(endDate);
+    const date = view.view.title;
+    const [year, month] = date
+      .replace("년", "")
+      .replace("월", "")
+      .split(" ")
+      .map(Number);
+    setCurrentYear(year);
+    setCurrentMonth(month);
   };
 
   return (
@@ -71,7 +84,7 @@ function Calendar() {
       {/* 툴바 아래에 총 지출액 표시 */}
       <div className="total-expense">
         <strong>
-          {currentMonth} 총 지출액: {totalExpense} 원
+          {currentMonth}월 총 지출액: {totalExpense}원
         </strong>
       </div>
       <FullCalendar
@@ -91,8 +104,6 @@ function Calendar() {
             click: handleButtonClick,
           },
         }}
-        // view 변경 시 호출되는 콜백
-        viewDidMount={handleViewRender}
         datesSet={handleViewRender} // 달력이 렌더링될 때마다 호출되는 콜백
       />
 
