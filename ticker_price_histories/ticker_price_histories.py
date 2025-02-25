@@ -1,13 +1,16 @@
 import requests
 import os
 from dotenv import load_dotenv
+import sys
 
 # 환경 변수
 load_dotenv()
 
-APP_KEY = os.getenv("APP_KEY")
-APP_SECRET = os.getenv("APP_SECRET")
-ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
+
+APP_KEY = "PSYAbYIeEqochTbGfjZ2k6lixw1RynxJAhKK"
+APP_SECRET = "ZsGkDn+wICn8RUiYREFCFlTQTu1QF9ykUdQ02+T2wNtHwVQlalWLLK2Yi4Ypc3NbKWb1wx+MYn98++yovgtldzhZ6ohBP7KTqy9BV7xFO080BQtPc2bkqf379y5jAOb5vD6rFaB7ENK7Cf4Dizq2OAJ9mvviEyiUT5NGKcPH0MVkioZ5shk="
+ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjJlMTdhNDQ4LWI5ODItNDU5Ny1hMzkwLThkODFiODYzYTMyMiIsInByZHRfY2QiOiIiLCJpc3MiOiJ1bm9ndyIsImV4cCI6MTc0MDU0OTc1OSwiaWF0IjoxNzQwNDYzMzU5LCJqdGkiOiJQU1lBYllJZUVxb2NoVGJHZmpaMms2bGl4dzFSeW54SkFoS0sifQ.cdFMOmOWCR4QXAjcNUkLUm1sSLljwJfTupYQF_R-0lPaRpd_26ANKX6YZDQ_bzhDo1nafjIuGwAREo-lgpHbOw"
 
 
 def get_daily_price(stock_code: str, start_date: str, end_date: str) -> list:
@@ -51,7 +54,7 @@ def generate_insert_sql(stock_code: str, data: list) -> list:
         low_price = record["stck_lwpr"]
         volume = record["acml_vol"]
 
-        query = f"INSERT INTO {TABLE_NAME} (date, ticker_id, open_price, closed_price, high_price, low_price, volume, create_timestamp, update_timestamp)\n"
+        query = f"INSERT INTO {TABLE_NAME} (history_date, ticker_id, open_price, closed_price, high_price, low_price, volume, create_timestamp, update_timestamp)\n"
         query += f"VALUES (TO_DATE('{date}', 'YYYYMMDD'), '{stock_code}', {open_price}, {close_price}, {high_price}, {low_price}, {volume}, SYSTIMESTAMP, SYSTIMESTAMP);\n"
         result.append(query)
     return result
@@ -66,8 +69,8 @@ if __name__ == "__main__":
     URL = "/uapi/domestic-stock/v1/quotations/inquire-daily-itemchartprice"
     TR_ID = "FHKST03010100"
 
-    START_DATE = "20250101"
-    END_DATE = "20250131"
+    START_DATE = "20241101"
+    END_DATE = "20241130"
 
     # SQL 테이블명
     TABLE_NAME = "ticker_price_histories"
@@ -83,7 +86,7 @@ if __name__ == "__main__":
         time.sleep(0.5)
 
     # SQL 파일 저장
-    sql_file_path = "./25년01월_시세.sql"
+    sql_file_path = "./24년11월_시세.sql"
     with open(sql_file_path, 'w', encoding='utf-8') as sql_file:
         for sql in all_sql_statements:
             sql_file.write(sql + "\n")
