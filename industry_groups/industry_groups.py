@@ -10,7 +10,7 @@ def main():
         sql_statements.append(sql)
 
     # SQL 파일 저장
-    sql_file_path = "./industry_groups.sql"
+    sql_file_path = "./업종 대분류.sql"
 
     with open(sql_file_path, 'w', encoding='utf-8') as sql_file:
         for sql in sql_statements:
