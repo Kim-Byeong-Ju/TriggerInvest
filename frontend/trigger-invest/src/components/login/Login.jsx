@@ -10,7 +10,7 @@ const Login = () => {
         e.preventDefault();
         console.log("로그인 시도:", { id, password });
         try {
-            const response = await axios.post("https://your-api.com/api/login", {
+            const response = await axios.post("http://localhost:8080/login", {
                 id,
                 password
             });
