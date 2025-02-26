@@ -1,5 +1,4 @@
 function Info({ infoData }) {
-    console.log(infoData)
     return (
         <>
         <div>상장일자 : {infoData.listing_date}</div>

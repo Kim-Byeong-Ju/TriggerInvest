@@ -13,7 +13,7 @@ const useFetchSymbolData = (stockCode) => {
     if (!stockCode) return;
 
     try {
-      const response = await axiosInstance.get("stocks/stock-symbol", {
+      const response = await axiosInstance.get("stocks/symbol", {
         params: { stockCode },
       });
 

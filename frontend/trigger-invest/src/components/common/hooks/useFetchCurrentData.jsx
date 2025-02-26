@@ -13,7 +13,7 @@ const useFetchCurrentData = (stockCode) => {
     if (!stockCode) return;
 
     try {
-      const response = await axiosInstance.get("stocks/stock-current-price", {
+      const response = await axiosInstance.get("stocks/current-price", {
         params: { stockCode }
       });
 

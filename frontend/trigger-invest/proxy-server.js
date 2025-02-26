@@ -16,7 +16,7 @@ app.use(cors({
 
 app.use(express.json());
 
-app.get("/api/stocks/stock-symbol", async (req, res) => {
+app.get("/api/stocks/symbol", async (req, res) => {
     try {
         const { stockCode } = req.query;
         if (!stockCode) {
@@ -44,7 +44,7 @@ app.get("/api/stocks/stock-symbol", async (req, res) => {
     }
 });
 
-app.get("/api/stocks/stock-current-price", async (req, res) => {
+app.get("/api/stocks/current-price", async (req, res) => {
     try {
         const { stockCode } = req.query;
         if (!stockCode) {
@@ -62,6 +62,93 @@ app.get("/api/stocks/stock-current-price", async (req, res) => {
                 appkey: process.env.REACT_APP_APP_KEY,
                 appsecret: process.env.REACT_APP_APP_SECRET_KEY,
                 tr_id: "FHKST01010100"
+            },
+        });
+
+        res.json(response.data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get("/api/stocks/volume-rank", async (req, res) => {
+    try {
+        const response = await axios.get("https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/quotations/volume-rank", {
+            params: {
+                fid_cond_mrkt_div_code: "J",
+                fid_cond_scr_div_code: "20171",
+                fid_input_iscd: "0000",
+                fid_div_cls_code: "0",
+                fid_blng_cls_code: "0",
+                fid_trgt_cls_code: "11111111",
+                fid_trgt_exls_cls_code: "000000",
+                fid_input_price_1: "0",
+                fid_input_price_2: "0",
+                fid_vol_cnt: "0",
+                fid_input_date_1: "0"
+            },
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+                appkey: process.env.REACT_APP_APP_KEY,
+                appsecret: process.env.REACT_APP_APP_SECRET_KEY,
+                tr_id: "FHPST01710000"
+            },
+        });
+
+        res.json(response.data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get("/api/stocks/fluctuation-rank", async (req, res) => {
+    try {
+        const response = await axios.get("https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/ranking/fluctuation", {
+            params: {
+                fid_cond_mrkt_div_code: "J",
+                fid_cond_scr_div_code: "20170",
+                fid_input_iscd: "0000",
+                fid_rank_sort_cls_code: "0",
+                fid_input_cnt_1: "0",
+                fid_prc_cls_code: "0",
+                fid_input_price_1: "0",
+                fid_input_price_2: "0",
+                fid_vol_cnt: "0",
+                fid_trgt_cls_code: "0",
+                fid_trgt_exls_cls_code: "0",
+                fid_div_cls_code: "0",
+                fid_rsfl_rate1: "0",
+                fid_rsfl_rate2: "0"
+            },           
+            
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+                appkey: process.env.REACT_APP_APP_KEY,
+                appsecret: process.env.REACT_APP_APP_SECRET_KEY,
+                tr_id: "FHPST01700000"
+            },
+        });
+
+        res.json(response.data);
+    } catch (error) {
+        console.error(error);
+        res.status(500).json({ error: error.message });
+    }
+});
+
+app.get("/api/stocks/search-rank", async (req, res) => {
+    try {
+        const response = await axios.get("https://openapi.koreainvestment.com:9443/uapi/domestic-stock/v1/ranking/hts-top-view", {
+            headers: {
+                "content-type": "application/json",
+                authorization: `Bearer ${process.env.REACT_APP_TOKEN}`,
+                appkey: process.env.REACT_APP_APP_KEY,
+                appsecret: process.env.REACT_APP_APP_SECRET_KEY,
+                tr_id: "HHMCM000100C0"
             },
         });
 

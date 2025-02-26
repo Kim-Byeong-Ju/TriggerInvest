@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const BASEURL = 'http://localhost:3000/api/stocks/stock-info/';
+const BASEURL = 'http://localhost:3000/api/stocks/info/';
 
 const useFetchInfoData = (stockCode) => {
   const [infoData, setInfoData] = useState(null);

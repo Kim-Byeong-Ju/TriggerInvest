@@ -30,7 +30,7 @@ function fakeStockData() {
   return data.reverse();
 }
 
-mock.onGet(BASEURL + 'stocks/stock-price/').reply(200, fakeStockData());
+mock.onGet(BASEURL + 'stocks/price/').reply(200, fakeStockData());
 
 
 // stockDetail/Info.jsx
@@ -44,4 +44,4 @@ function fakeInfoData() {
   }
 }
 
-mock.onGet(BASEURL + 'stocks/stock-info/').reply(200, fakeInfoData());
+mock.onGet(BASEURL + 'stocks/info/').reply(200, fakeInfoData());
