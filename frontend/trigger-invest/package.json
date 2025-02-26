@@ -16,6 +16,7 @@
     "@fullcalendar/react": "^6.1.15",
     "axios": "^1.7.9",
     "axios-mock-adapter": "^2.1.0",
+    "cors": "^2.8.5",
     "lightweight-charts": "^4.2.1",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
