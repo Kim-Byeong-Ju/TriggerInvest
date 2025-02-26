@@ -62,16 +62,13 @@ def get_prevent_stock_info(domain: str, url: str, tr_id: str, stock_code: str) -
         )
     else:
         print(f"Error {response.status_code}: {response.text}")
-        return ("", "", "", "")
+        return "", "", "", ""
 
 
-def generate_insert_sql(stock_code, industry_group_id, name, current_price, prev_diff, prev_diff_rate, prev_diff_sign) -> list:
-    result = []
-
+def generate_insert_sql(stock_code: str, industry_group_id: str, name: str, current_price: str, prev_diff: str, prev_diff_rate: str, prev_diff_sign: str) -> list:
     query = f"INSERT INTO {TABLE_NAME} (ticker_id, industry_group_id, name, current_price, prev_diff, prev_diff_rate, prev_diff_sign, create_timestamp, update_timestampe)\n"
     query += f"VALUES ('{stock_code}', '{industry_group_id}', '{name}', {current_price}, {prev_diff}, {prev_diff_rate}, '{prev_diff_sign}', SYSTIMESTAMP, SYSTIMESTAMP);\n"
-    result.append(query)
-    return result
+    return [query]
 
 
 if __name__ == "__main__":

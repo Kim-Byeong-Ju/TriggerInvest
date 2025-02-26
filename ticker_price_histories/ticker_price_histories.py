@@ -1,16 +1,13 @@
 import requests
 import os
 from dotenv import load_dotenv
-import sys
 
 # 환경 변수
 load_dotenv()
 
-sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), "..")))
-
-APP_KEY = "PSYAbYIeEqochTbGfjZ2k6lixw1RynxJAhKK"
-APP_SECRET = "ZsGkDn+wICn8RUiYREFCFlTQTu1QF9ykUdQ02+T2wNtHwVQlalWLLK2Yi4Ypc3NbKWb1wx+MYn98++yovgtldzhZ6ohBP7KTqy9BV7xFO080BQtPc2bkqf379y5jAOb5vD6rFaB7ENK7Cf4Dizq2OAJ9mvviEyiUT5NGKcPH0MVkioZ5shk="
-ACCESS_TOKEN = "eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJ0b2tlbiIsImF1ZCI6IjJlMTdhNDQ4LWI5ODItNDU5Ny1hMzkwLThkODFiODYzYTMyMiIsInByZHRfY2QiOiIiLCJpc3MiOiJ1bm9ndyIsImV4cCI6MTc0MDU0OTc1OSwiaWF0IjoxNzQwNDYzMzU5LCJqdGkiOiJQU1lBYllJZUVxb2NoVGJHZmpaMms2bGl4dzFSeW54SkFoS0sifQ.cdFMOmOWCR4QXAjcNUkLUm1sSLljwJfTupYQF_R-0lPaRpd_26ANKX6YZDQ_bzhDo1nafjIuGwAREo-lgpHbOw"
+APP_KEY = os.getenv("APP_KEY")
+APP_SECRET = os.getenv("APP_SECRET")
+ACCESS_TOKEN = os.getenv("ACCESS_TOKEN")
 
 
 def get_daily_price(stock_code: str, start_date: str, end_date: str) -> list:

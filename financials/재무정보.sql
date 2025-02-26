@@ -293,7 +293,7 @@ INSERT INTO financials (ticker_id, listing_date, total_profit, net_profit, net_p
 VALUES ('028050', TO_DATE('19961224', 'YYYYMMDD'), 10669, 5276.00, 7.14, SYSTIMESTAMP, SYSTIMESTAMP);
 
 INSERT INTO financials (ticker_id, listing_date, total_profit, net_profit, net_profit_rate, create_timestamp, update_timestamp)
-VALUES ('006400', TO_DATE('19790227', 'YYYYMMDD'), 25224, 8182.00, 6.37, SYSTIMESTAMP, SYSTIMESTAMP);
+VALUES ('006400', TO_DATE('19790227', 'YYYYMMDD'), 30936, 5755.00, 3.47, SYSTIMESTAMP, SYSTIMESTAMP);
 
 INSERT INTO financials (ticker_id, listing_date, total_profit, net_profit, net_profit_rate, create_timestamp, update_timestamp)
 VALUES ('028260', TO_DATE('20141218', 'YYYYMMDD'), 52733, 21162.00, 6.59, SYSTIMESTAMP, SYSTIMESTAMP);
@@ -308,7 +308,7 @@ INSERT INTO financials (ticker_id, listing_date, total_profit, net_profit, net_p
 VALUES ('018260', TO_DATE('20141114', 'YYYYMMDD'), 15058, 5932.00, 5.82, SYSTIMESTAMP, SYSTIMESTAMP);
 
 INSERT INTO financials (ticker_id, listing_date, total_profit, net_profit, net_profit_rate, create_timestamp, update_timestamp)
-VALUES ('009150', TO_DATE('19790227', 'YYYYMMDD'), 15200, 4920.00, 6.31, SYSTIMESTAMP, SYSTIMESTAMP);
+VALUES ('009150', TO_DATE('19790227', 'YYYYMMDD'), 19592, 7032.00, 6.83, SYSTIMESTAMP, SYSTIMESTAMP);
 
 INSERT INTO financials (ticker_id, listing_date, total_profit, net_profit, net_profit_rate, create_timestamp, update_timestamp)
 VALUES ('005930', TO_DATE('19750611', 'YYYYMMDD'), 1143086, 344514.00, 11.45, SYSTIMESTAMP, SYSTIMESTAMP);
