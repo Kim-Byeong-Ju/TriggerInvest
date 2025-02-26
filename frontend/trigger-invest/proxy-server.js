@@ -16,7 +16,7 @@ app.use(cors({
 
 app.use(express.json());
 
-app.get("/api/stocks/stock-info", async (req, res) => {
+app.get("/api/stocks/stock-symbol", async (req, res) => {
     try {
         const { stockCode } = req.query;
         if (!stockCode) {
