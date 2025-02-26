@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="example.triggerinvestservlet.Financial">
+
+    <select id="getInfoByStockCode" parameterType="String" resultType="Financial">
+        <![CDATA[
+        SELECT ticker_id as tickerId, listing_date as listingDate, total_profit as totalProfit, net_profit as netProfit, net_profit_rate as netProfitRate
+        FROM financials
+        WHERE ticker_id = #{stockCode}
+        ]]>
+    </select>
+</mapper>
