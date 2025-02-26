@@ -1,6 +1,11 @@
+import React from "react";
+import Login from "../components/login/Login";
+
 function LoginPage () {
     return (
-        <div>로그인 페이지</div>
+        <div>
+            <Login />
+        </div>
     );
 }
 

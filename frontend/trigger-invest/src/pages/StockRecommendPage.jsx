@@ -1,7 +1,14 @@
+import RecommendSuccess from '../components/stockRecommend/RecommendSuccess';
+import RecommendFail from '../components/stockRecommend/RecommendFail';
+
 function StockRecommendPage () {
-    return (
-        <div>주식 추천 페이지</div>
-    );
+    const recommendFlag = false;
+
+    if (recommendFlag) {
+        return <RecommendSuccess />
+    } else {
+        return <RecommendFail />
+    }
 }
 
 export default StockRecommendPage;

@@ -1,10 +1,12 @@
-import { Routes, Route } from "react-router-dom";
-import Nav from "./components/common/nav/Nav";
-import LoginPage from "./pages/LoginPage";
-import HouseholdPage from "./pages/HouseholdPage";
-import StockRecommendPage from "./pages/StockRecommendPage";
-import StockDetailPage from "./pages/StockDetailPage";
+import { Routes, Route } from 'react-router-dom';
+import Nav from './components/common/nav/Nav';
+import LoginPage from './pages/LoginPage';
+import HouseholdPage from './pages/HouseholdPage';
+import StockRecommendPage from './pages/StockRecommendPage';
+import StockDetailPage from './pages/StockDetailPage';
 import "./app.css";
+import './axiosMock';
+
 function App() {
   return (
     <div id="app">
