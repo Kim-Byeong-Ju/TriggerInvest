@@ -24,7 +24,7 @@ public class UserDAO {
         params.put("password", password);
 
         try {
-            userVO = sqlSession.selectOne("example.User.login", params);
+            userVO = sqlSession.selectOne("example.triggerinvestservlet.User.login", params);
         } catch (Exception e) {
             e.printStackTrace();
         } finally {

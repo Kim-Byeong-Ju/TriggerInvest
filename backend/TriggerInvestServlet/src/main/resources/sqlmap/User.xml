@@ -2,7 +2,7 @@
 <!DOCTYPE mapper
         PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="example.User">
+<mapper namespace="example.triggerinvestservlet.User">
 
     <select id="login" parameterType="map" resultType="User">
         <!--  CDATA : SQL Query 안의 특수문자가 tag로 인식되지 않도록 처리  -->
