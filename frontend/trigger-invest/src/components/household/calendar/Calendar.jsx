@@ -1,22 +1,23 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import FullCalendar from "@fullcalendar/react";
 import dayGridPlugin from "@fullcalendar/daygrid";
 import interactionPlugin from "@fullcalendar/interaction";
 import InputModal from "@/components/household/modal/InputModal";
 import EventListModal from "@/components/household/modal/EventListModal"; // 새로 추가된 모달
+import useFetchHousehold from "@/components/common/hooks/useFetchHousehold";
 import "@fullcalendar/core/locales/ko";
 import "@/pages/household.css";
 import "./calendar.css";
 
 function Calendar() {
-  const [events, setEvents] = useState([]);
+  const userId = "qudwn2941";
+  const [events, setEvents] = useState(useFetchHousehold(userId));
   const [showInputModal, setShowInputModal] = useState(false);
   const [showEventListModal, setShowEventListModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
   const [selectedEvents, setSelectedEvents] = useState([]);
   const [currentMonth, setCurrentMonth] = useState();
   const [currentYear, setCurrentYear] = useState();
-
   // 날짜 클릭 시 해당 날짜의 이벤트 목록 모달 열기
   const handleDateClick = (info) => {
     const clickedDate = info.dateStr;
@@ -65,7 +66,7 @@ function Calendar() {
         );
         return isNaN(amount) ? sum : sum + amount;
       }, 0);
-  }, [events, currentMonth]); // currentMonth가 변경될 때마다 계산되도록 의존성 추가
+  }, [events, currentMonth, currentYear]); // currentMonth가 변경될 때마다 계산되도록 의존성 추가
 
   // FullCalendar에서 view의 title 값 가져오기
   const handleViewRender = (view) => {
