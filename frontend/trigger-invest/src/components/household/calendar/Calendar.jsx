@@ -10,8 +10,9 @@ import "@/pages/household.css";
 import "./calendar.css";
 
 function Calendar() {
-  const userId = "qudwn2941";
-  const [events, setEvents] = useState(useFetchHousehold(userId));
+  // const userId = "qudwn2941";
+  // const [events, setEvents] = useState(useFetchHousehold(userId));
+  const [events, setEvents] = useState([]);
   const [showInputModal, setShowInputModal] = useState(false);
   const [showEventListModal, setShowEventListModal] = useState(false);
   const [selectedDate, setSelectedDate] = useState("");
