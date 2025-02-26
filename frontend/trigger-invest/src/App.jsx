@@ -10,7 +10,7 @@ import './axiosMock';
 function App() {
   return (
     <div id="app">
-      {/* <Nav /> */}
+      <Nav />
       <Routes>
         <Route path="/login" element={<LoginPage />}></Route>
         <Route path="/household" element={<HouseholdPage />}></Route>
