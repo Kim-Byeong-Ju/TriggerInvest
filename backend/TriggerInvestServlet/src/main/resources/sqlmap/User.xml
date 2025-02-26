@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="example.User">
+
+    <select id="login" parameterType="map" resultType="User">
+        <!--  CDATA : SQL Query 안의 특수문자가 tag로 인식되지 않도록 처리  -->
+        <![CDATA[
+        SELECT *
+        FROM USERS
+        WHERE USER_ID = #{id} AND PASSWORD = #{password}
+        ]]>
+    </select>
+</mapper>

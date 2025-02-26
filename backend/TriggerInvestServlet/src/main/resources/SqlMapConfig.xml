@@ -19,6 +19,7 @@
     <!-- 일반적으로 VO에 대한 alias 설정 -->
     <typeAliases>
 <!--        <typeAlias alias="Board" type="org.example.servletloginboard.vo.BoardVO" />-->
+        <typeAlias type="org.example.triggerinvestservlet.vo.UserVO" alias="User"/>
     </typeAliases>
 
     <!-- DB 연결 정보 -->
@@ -43,5 +44,6 @@
     <!-- SQL 구문을 작성하는 mapper라는 xml 파일의 경로를 지정 -->
     <mappers>
 <!--        <mapper resource="./sqlmap/Board.xml" />-->
+        <mapper resource="./sqlmap/User.xml"/>
     </mappers>
 </configuration>
