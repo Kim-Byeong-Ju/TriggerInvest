@@ -1,0 +1,6 @@
+<component name="ArtifactManager">
+  <artifact type="exploded-war" name="trigger">
+    <output-path>$PROJECT_DIR$/backend/TriggerInvestServlet/target/TriggerInvestServlet</output-path>
+    <root id="root" />
+  </artifact>
+</component>
