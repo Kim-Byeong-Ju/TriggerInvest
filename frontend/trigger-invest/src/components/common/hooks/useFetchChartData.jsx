@@ -1,16 +1,16 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
 
-const BASEURL = 'http://localhost:3000/api/v1/stocks/stock-price/';
+const BASEURL = 'http://localhost:3000/api/stocks/stock-price/';
 
-const useFetchStockData = (stockCode) => {
-  const [data, setData] = useState(null);
+const useFetchChartData = (stockCode) => {
+  const [chartData, setChartData] = useState(null);
 
   useEffect(() => {
     const fetchData = async () => {
       try {
         const response = await axios.get(BASEURL);
-        setData(response.data);
+        setChartData(response.data);
       } catch (error) {
         console.error(error);
       }
@@ -19,7 +19,7 @@ const useFetchStockData = (stockCode) => {
     fetchData();
   }, [stockCode]);
 
-  return { data };
+  return { chartData };
 };
 
-export default useFetchStockData;
+export default useFetchChartData;

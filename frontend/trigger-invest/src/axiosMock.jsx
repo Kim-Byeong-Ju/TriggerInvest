@@ -3,7 +3,7 @@ import AxiosMockAdapter from 'axios-mock-adapter';
 
 const mock = new AxiosMockAdapter(axios);
 
-const BASEURL = 'http://localhost:3000/api/v1/';
+const BASEURL = 'http://localhost:3000/api/';
 
 // stockDetail/Chart.jsx
 function fakeStockData() {
