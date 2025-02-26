@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="example.triggerinvestservlet.Household">
+
+    <select id="selectHouseholdByUserId" parameterType="String" resultType="Household">
+        SELECT transaction_id as householdId, title, user_id as userId, amount, sector_id as sectorId, transaction_date as transactionDate
+        FROM transactions
+        WHERE user_id = #{userId}
+    </select>
+
+    <insert id="insertHousehold" parameterType="Household">
+        INSERT INTO transactions (title, user_id, amount, sector_id, transaction_date)
+        VALUES (#{title}, #{userId}, #{amount}, #{sectorId}, #{transactionDate})
+    </insert>
+
+</mapper>
