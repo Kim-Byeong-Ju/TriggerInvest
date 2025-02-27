@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="example.triggerinvestservlet.RelatedTicker">
+
+    <select id="getRelatedTickersByStockCode" parameterType="String" resultType="RelatedTicker">
+        <![CDATA[
+        SELECT t.ticker_id AS tickerId, t.name AS tickerName, ig.industry_group_id AS industryGroupId, ig.name AS industryGroupName
+        FROM tickers t
+        JOIN industry_groups ig
+            ON t.industry_group_id = ig.industry_group_id
+        WHERE t.industry_group_id = (
+            SELECT industry_group_id
+            FROM tickers
+            WHERE ticker_id = #{stockCode}
+        )
+        ]]>
+    </select>
+</mapper>
