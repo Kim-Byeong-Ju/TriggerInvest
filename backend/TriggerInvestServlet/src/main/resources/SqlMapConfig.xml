@@ -25,6 +25,7 @@
         <typeAlias alias="UserSector" type="org.example.triggerinvestservlet.vo.UserSectorVO"/>
         <typeAlias alias="Transaction" type="org.example.triggerinvestservlet.vo.TransactionVO"/>
         <typeAlias alias="SectorWeight" type="org.example.triggerinvestservlet.vo.SectorWeightVO"/>
+        <typeAlias alias="RelatedTicker" type="org.example.triggerinvestservlet.vo.RelatedTickerVO" />
     </typeAliases>
 
     <!-- DB 연결 정보 -->
@@ -54,6 +55,6 @@
         <mapper resource="./sqlmap/Financial.xml"/>
         <mapper resource="./sqlmap/UserSector.xml"/>
         <mapper resource="./sqlmap/Transaction.xml"/>
-
+        <mapper resource="./sqlmap/RelatedTicker.xml"/>
     </mappers>
 </configuration>
