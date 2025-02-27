@@ -15,4 +15,10 @@
         VALUES (#{title}, #{userId}, #{amount}, #{sectorId}, #{transactionDate})
     </insert>
 
+    <select id="selectTitle" parameterType="String" resultType="String">
+        SELECT title
+          FROM transactions
+         WHERE user_id = #{userId}
+    </select>
+
 </mapper>

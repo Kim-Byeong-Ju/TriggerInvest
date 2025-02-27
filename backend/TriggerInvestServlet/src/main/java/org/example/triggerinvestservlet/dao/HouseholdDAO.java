@@ -27,4 +27,14 @@ public class HouseholdDAO {
             e.printStackTrace();
         }
     }
+
+    public List<String> selectTitle(String userId) {
+        List<String> list = null;
+        try {
+            list = sqlSession.selectList("example.triggerinvestservlet.Household.selectTitle", userId);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
