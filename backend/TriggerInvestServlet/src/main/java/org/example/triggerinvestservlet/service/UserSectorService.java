@@ -4,22 +4,25 @@ import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
 
 import org.example.triggerinvestservlet.dao.UserDAO;
+import org.example.triggerinvestservlet.dao.UserSectorDAO;
 import org.example.triggerinvestservlet.mybatis.MyBatisSessionFactory;
+import org.example.triggerinvestservlet.vo.UserSectorVO;
 import org.example.triggerinvestservlet.vo.UserVO;
 
-public class UserService {
+import java.util.List;
 
-    public UserVO login(String id, String password) {
+public class UserSectorService {
+
+    public List<UserSectorVO> getUserSector(String id) {
+        System.out.println(123);
         SqlSessionFactory sqlSessionFactory = MyBatisSessionFactory.getSqlSessionFactory();
         SqlSession sqlSession = sqlSessionFactory.openSession();
 
-        UserDAO userDAO = new UserDAO(sqlSession);
+        UserSectorDAO userSectorDAO = new UserSectorDAO(sqlSession);
 
-        UserVO result = userDAO.login(id, password);
+        List<UserSectorVO> result = userSectorDAO.getUserSector(id);
 
         return result;
     }
-
-
 
 }

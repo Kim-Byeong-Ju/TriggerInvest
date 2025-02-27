@@ -21,8 +21,11 @@
         <typeAlias alias="Household" type="org.example.triggerinvestservlet.vo.HouseholdVO" />
         <typeAlias alias="TickerHistory" type="org.example.triggerinvestservlet.vo.TickerHistoryVO" />
         <typeAlias alias="Financial" type="org.example.triggerinvestservlet.vo.FinancialVO" />
-        <typeAlias type="org.example.triggerinvestservlet.vo.UserVO" alias="User"/>
-        <typeAlias type="org.example.triggerinvestservlet.vo.TickerVO" alias="Ticker"/>
+        <typeAlias alias="User" type="org.example.triggerinvestservlet.vo.UserVO"/>
+        <typeAlias alias="UserSector" type="org.example.triggerinvestservlet.vo.UserSectorVO"/>
+        <typeAlias alias="Transaction" type="org.example.triggerinvestservlet.vo.TransactionVO"/>
+        <typeAlias alias="SectorWeight" type="org.example.triggerinvestservlet.vo.SectorWeightVO"/>
+        <typeAlias alias="RelatedTicker" type="org.example.triggerinvestservlet.vo.RelatedTickerVO" />
     </typeAliases>
 
     <!-- DB 연결 정보 -->
@@ -50,5 +53,8 @@
         <mapper resource="./sqlmap/User.xml"/>
         <mapper resource="./sqlmap/TickerHistory.xml"/>
         <mapper resource="./sqlmap/Financial.xml"/>
+        <mapper resource="./sqlmap/UserSector.xml"/>
+        <mapper resource="./sqlmap/Transaction.xml"/>
+        <mapper resource="./sqlmap/RelatedTicker.xml"/>
     </mappers>
 </configuration>
