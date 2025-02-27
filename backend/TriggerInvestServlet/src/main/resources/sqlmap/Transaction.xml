@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="example.triggerinvestservlet.Transaction">
+
+    <select id="getSectorWeightsByUser" parameterType="String" resultType="SectorWeight">
+        <![CDATA[
+        SELECT sectorId, sectorName, totalAmount, transactionCount, weightScore
+        FROM (
+                 SELECT
+                     s.sector_id AS sectorId,
+                     s.name AS sectorName,
+                     SUM(t.amount) AS totalAmount,
+                     COUNT(*) AS transactionCount,
+                     SUM(t.amount) * 0.7 + COUNT(*) * 0.3 AS weightScore
+                 FROM transactions t
+                          LEFT JOIN sectors s ON t.sector_id = s.sector_id
+                 WHERE t.user_id = #{userId}
+                 GROUP BY s.sector_id, s.name  -- ✅ sector_id도 추가해야 함
+             )
+        ORDER BY weightScore DESC
+        ]]>
+    </select>
+</mapper>
