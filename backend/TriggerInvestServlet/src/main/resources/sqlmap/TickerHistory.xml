@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="example.triggerinvestservlet.TickerHistory">
+
+    <select id="getHistoriesByStockCode" parameterType="String" resultType="TickerHistory">
+        <![CDATA[
+        SELECT history_date as historyDate, ticker_id as tickerId, open_price as openPrice, closed_price as closedPrice, high_price as highPrice, low_price as lowPrice, volume
+        FROM ticker_price_histories
+        WHERE ticker_id = #{stockCode}
+        ORDER BY historyDate
+        ]]>
+    </select>
+</mapper>
