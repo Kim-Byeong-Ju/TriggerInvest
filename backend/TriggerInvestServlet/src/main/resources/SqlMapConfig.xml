@@ -21,6 +21,7 @@
         <typeAlias alias="Household" type="org.example.triggerinvestservlet.vo.HouseholdVO" />
         <typeAlias alias="TickerHistory" type="org.example.triggerinvestservlet.vo.TickerHistoryVO" />
         <typeAlias alias="Financial" type="org.example.triggerinvestservlet.vo.FinancialVO" />
+        <typeAlias alias="RelatedTicker" type="org.example.triggerinvestservlet.vo.RelatedTickerVO" />
         <typeAlias type="org.example.triggerinvestservlet.vo.UserVO" alias="User"/>
     </typeAliases>
 
@@ -49,5 +50,6 @@
         <mapper resource="./sqlmap/User.xml"/>
         <mapper resource="./sqlmap/TickerHistory.xml"/>
         <mapper resource="./sqlmap/Financial.xml"/>
+        <mapper resource="./sqlmap/RelatedTicker.xml"/>
     </mappers>
 </configuration>
