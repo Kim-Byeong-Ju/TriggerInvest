@@ -13,7 +13,7 @@
                      s.name AS sectorName,
                      SUM(t.amount) AS totalAmount,
                      COUNT(*) AS transactionCount,
-                     SUM(t.amount) * 0.7 + COUNT(*) * 0.3 AS weightScore
+                     SUM(t.amount) * 0.5 + COUNT(*) * 0.5 AS weightScore
                  FROM transactions t
                           LEFT JOIN sectors s ON t.sector_id = s.sector_id
                  WHERE t.user_id = #{userId}
