@@ -13,7 +13,7 @@ public class TickerDAO {
     public List<TickerVO> selectAllTicker() {
         List<TickerVO> tickerList = null;
         try {
-            sqlSession.selectList("example.triggerinvestservlet.Financial.selectAllTicker");
+            tickerList = sqlSession.selectList("example.triggerinvestservlet.Financial.selectAllTicker");
         } catch (Exception e) {
             e.printStackTrace();
         }
