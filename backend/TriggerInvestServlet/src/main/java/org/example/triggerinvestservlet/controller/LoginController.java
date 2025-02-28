@@ -33,8 +33,11 @@ public class LoginController extends HttpServlet {
             session.setAttribute("user_id", userId);
 
             // JSON 응답 (로그인 성공)
-            out.print("{\"status\": \"success\", \"message\": \"로그인 성공\", \"userId\": \"" + userId + "\"}");
-        } else {
+            out.print("{\"status\": \"success\", " +
+                    "\"message\": \"로그인 성공\", " +
+                    "\"userId\": \"" + userId + "\", " +
+                    "\"userName\": \"" + user.getName() + "\"}");}
+            else {
             // JSON 응답 (로그인 실패)
             response.setStatus(HttpServletResponse.SC_UNAUTHORIZED); // HTTP 401 상태 코드 반환
             out.print("{\"status\": \"fail\", \"message\": \"아이디 또는 비밀번호가 잘못되었습니다.\"}");
