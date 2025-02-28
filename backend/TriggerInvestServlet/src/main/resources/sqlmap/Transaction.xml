@@ -6,27 +6,7 @@
 
     <select id="getSectorWeightsByUser" parameterType="String" resultType="SectorWeight">
         <![CDATA[
-        SELECT
-            sectorData.sectorId,
-            sectorData.sectorName,
-            sectorData.totalAmount,
-            sectorData.transactionCount,
-            sectorData.weightScore,
-            (
-                SELECT JSON_ARRAYAGG(
-                               JSON_OBJECT(
-                                       'tickerId' VALUE t.ticker_id,
-                                       'tickerName' VALUE t.name,
-                                       'description' VALUE f.description,
-                                       'industryGroupName' VALUE ig.name
-                               ) RETURNING CLOB  -- ✅ CLOB 반환 추가
-                       )
-                FROM tickers t
-                         JOIN sector_industry_group sig ON t.industry_group_id = sig.industry_group_id
-                         JOIN industry_groups ig ON sig.industry_group_id = ig.industry_group_id
-                         JOIN financials f ON t.ticker_id = f.TICKER_ID
-                WHERE sig.sector_id = sectorData.sectorId
-            ) AS tickers
+        SELECT sectorId, sectorName, totalAmount, transactionCount, weightScore
         FROM (
                  SELECT
                      s.sector_id AS sectorId,
@@ -36,10 +16,25 @@
                      SUM(t.amount) * 0.7 + COUNT(*) * 0.3 AS weightScore
                  FROM transactions t
                           LEFT JOIN sectors s ON t.sector_id = s.sector_id
-                 WHERE t.user_id = {userId}
-                 GROUP BY s.sector_id, s.name
-             ) sectorData
-        ORDER BY sectorData.weightScore DESC;
+                 WHERE t.user_id = #{userId}
+                 GROUP BY s.sector_id, s.name  -- ✅ sector_id도 추가해야 함
+             )
+        ORDER BY weightScore DESC
+        ]]>
+    </select>
+
+    <select id="getSectorTickers" parameterType="int" resultType="Ticker">
+        <![CDATA[
+        SELECT
+            t.TICKER_ID AS tickerId,
+            t.name AS tickerName,
+            f.description AS description,
+            ig.name AS industryGroupName
+        FROM tickers t
+                 JOIN sector_industry_group sig ON t.industry_group_id = sig.industry_group_id
+                 JOIN industry_groups ig ON sig.industry_group_id = ig.industry_group_id
+                 JOIN financials f ON t.ticker_id = f.TICKER_ID
+        WHERE sig.sector_id = #{id} -- 예시: sector_id = 20 (여행 섹터)
         ]]>
     </select>
 </mapper>
