@@ -1,0 +1,5 @@
+### python 서버 실행 순서
+
+- pip install flask sentence-transformers scikit-learn
+
+- python server.py
