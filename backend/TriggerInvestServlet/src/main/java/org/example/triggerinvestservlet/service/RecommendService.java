@@ -1,40 +1,20 @@
 package org.example.triggerinvestservlet.service;
-
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonNode;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
-import org.deeplearning4j.models.embeddings.loader.WordVectorSerializer;
 import org.example.triggerinvestservlet.dao.HouseholdDAO;
 import org.example.triggerinvestservlet.dao.TickerDAO;
 import org.example.triggerinvestservlet.mybatis.MyBatisSessionFactory;
 import org.example.triggerinvestservlet.vo.TickerVO;
-import org.nd4j.linalg.api.ndarray.INDArray;
-import org.nd4j.linalg.ops.transforms.Transforms;
-import org.deeplearning4j.models.word2vec.Word2Vec;
-
-import java.io.File;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.io.OutputStream;
+import java.net.HttpURLConnection;
+import java.net.URL;
+import java.nio.charset.StandardCharsets;
+import java.util.*;
 
 public class RecommendService {
-    public RecommendService() {
-        loadWord2VecModel();
-    }
-
-    private Word2Vec word2VecModel;
-    private void loadWord2VecModel() {
-        try {
-            File modelFile = new File("resources/models/GoogleNews-vectors-negative300.bin"); // 모델 경로 설정
-            if (!modelFile.exists()) {
-                throw new RuntimeException("Word2Vec 모델 파일을 찾을 수 없습니다: " + modelFile.getAbsolutePath());
-            }
-            word2VecModel = WordVectorSerializer.readWord2VecModel(modelFile);
-            System.out.println("Word2Vec 모델이 성공적으로 로드되었습니다.");
-        } catch (Exception e) {
-            e.printStackTrace();
-            System.err.println("Word2Vec 모델 로드 실패");
-        }
-    }
 
     public List<String> selectTitle(String userId) {
         List<String> list = null;
@@ -70,44 +50,42 @@ public class RecommendService {
         List<String> wordList = selectTitle(userId); // 사용자 키워드
         List<TickerVO> tickerList = selectAllTicker(); // 종목 리스트
 
+        try {
+            // 1. Flask 서버 URL
+            String flaskUrl = "http://127.0.0.1:5000/get_top_tickers";
 
-        for (TickerVO ticker : tickerList) {
-            String description = ticker.getDescription(); // 기업 설명
-            double similarity = computeCosineSimilarity(wordList, description);
-            ticker.setSimilarity(similarity);
-        }
+            // 2. JSON 데이터 생성
+            ObjectMapper objectMapper = new ObjectMapper();
+            Map<String, Object> requestData = new HashMap<>();
+            requestData.put("wordList", wordList);
+            requestData.put("tickerList", tickerList);
+            String jsonInputString = objectMapper.writeValueAsString(requestData);
 
-        // 유사도 기준으로 내림차순 정렬
-        tickerList.sort((a, b) -> Double.compare(b.getSimilarity(), a.getSimilarity()));
+            // 3. HTTP 요청 설정
+            URL url = new URL(flaskUrl);
+            HttpURLConnection conn = (HttpURLConnection) url.openConnection();
+            conn.setRequestMethod("POST");
+            conn.setRequestProperty("Content-Type", "application/json");
+            conn.setDoOutput(true);
 
-        return tickerList.subList(0, Math.min(10, tickerList.size()));
-
-    }
-
-    private double computeCosineSimilarity(List<String> words, String description) {
-        INDArray wordVector = getAverageVector(words);  // 사용자 키워드 평균 벡터
-        INDArray descVector = getAverageVector(Arrays.asList(description.split(" "))); // 기업 설명 평균 벡터
-
-        if (wordVector == null || descVector == null) {
-            return 0.0;  // 벡터가 없으면 유사도 0
-        }
-
-        return Transforms.cosineSim(wordVector, descVector);  // 코사인 유사도 계산
-    }
-
-    private INDArray getAverageVector(List<String> words) {
-        List<INDArray> vectors = new ArrayList<>();
-        for (String word : words) {
-            if (word2VecModel.hasWord(word)) {
-                vectors.add(word2VecModel.getWordVectorMatrix(word));
+            // 4. 데이터 전송
+            try (OutputStream os = conn.getOutputStream()) {
+                byte[] input = jsonInputString.getBytes(StandardCharsets.UTF_8);
+                os.write(input, 0, input.length);
             }
-        }
-        if (vectors.isEmpty()) return null;
 
-        INDArray sumVector = vectors.get(0).dup();
-        for (int i = 1; i < vectors.size(); i++) {
-            sumVector.addi(vectors.get(i));
+            // 5. 응답 처리
+            if (conn.getResponseCode() == 200) {
+                JsonNode responseJson = objectMapper.readTree(conn.getInputStream());
+                return objectMapper.convertValue(responseJson, new TypeReference<List<TickerVO>>() {});
+            } else {
+                System.err.println("Error: Flask 서버 응답 실패");
+                return Collections.emptyList();
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            return Collections.emptyList();
         }
-        return sumVector.div(vectors.size()); // 평균 벡터 계산
     }
+
 }
