@@ -30,10 +30,9 @@ public class TransactionController extends HttpServlet {
         // ✅ 1. 사용자별 섹터 가중치 리스트 조회
         List<SectorWeightVO> sectorWeights = transactionService.calculateSectorWeights(userId);
 
-        if (sectorWeights == null || sectorWeights.isEmpty()) {
-            resp.sendError(HttpServletResponse.SC_NOT_FOUND, "No sector weight data found for user.");
-            return;
-        }
+        System.out.println("happy");
+        System.out.println(sectorWeights);
+
 
         // ✅ 2. 각 섹터 ID별로 ticker 리스트를 조회 후 매핑
         for (SectorWeightVO sectorWeight : sectorWeights) {
