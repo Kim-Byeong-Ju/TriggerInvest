@@ -14,10 +14,12 @@
 
     <select id="selectAllTicker" resultType="Ticker">
          <![CDATA[
-            SELECT f.ticker_id as tickerId, t.name, f.description
+            SELECT f.ticker_id as tickerId, t.name as tickerName, f.description, ig.name as industryGroupName
             FROM financials f
             JOIN tickers t
               ON f.ticker_id = t.ticker_id
+            JOIN industry_groups ig
+              ON t.industry_group_id = ig.industry_group_id
         ]]>
     </select>
 </mapper>

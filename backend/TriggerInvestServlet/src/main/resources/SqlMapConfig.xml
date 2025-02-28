@@ -26,6 +26,7 @@
         <typeAlias alias="Transaction" type="org.example.triggerinvestservlet.vo.TransactionVO"/>
         <typeAlias alias="SectorWeight" type="org.example.triggerinvestservlet.vo.SectorWeightVO"/>
         <typeAlias alias="RelatedTicker" type="org.example.triggerinvestservlet.vo.RelatedTickerVO" />
+        <typeAlias alias="Ticker" type="org.example.triggerinvestservlet.vo.TickerVO" />
     </typeAliases>
 
     <!-- DB 연결 정보 -->
