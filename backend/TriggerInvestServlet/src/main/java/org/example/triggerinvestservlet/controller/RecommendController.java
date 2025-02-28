@@ -1,5 +1,6 @@
 package org.example.triggerinvestservlet.controller;
 
+import com.google.gson.Gson;
 import org.example.triggerinvestservlet.service.HouseholdService;
 import org.example.triggerinvestservlet.service.RecommendService;
 import org.example.triggerinvestservlet.vo.TickerVO;
@@ -21,12 +22,11 @@ public class RecommendController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String userId =req.getParameter("userId");
         RecommendService service = new RecommendService();
-        List<String> titleList = service.selectTitle(userId);
-        List<TickerVO> tickerList = service.selectAllTicker();
-        // 리스트를 ','로 구분된 문자열로 변환
-        String responseData = String.join(",", titleList);
-        resp.setContentType("text/plain");  // JSON이 아니라 일반 텍스트로 설정
+        List<TickerVO> list = service.recommendTicker(userId);
+        Gson gson = new Gson();
+        String jsonResponse = gson.toJson(list);
+        resp.setContentType("application/json");
         resp.setCharacterEncoding("UTF-8");
-        resp.getWriter().write(responseData);
+        resp.getWriter().write(jsonResponse);
     }
 }
