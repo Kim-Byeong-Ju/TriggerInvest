@@ -1,0 +1,103 @@
+.info-container {
+    width: 100%;
+    padding: 20px;
+    min-height: 440px;
+}
+
+/* 탭 버튼 스타일 */
+.tabs {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    margin-bottom: 30px;
+}
+
+.tabs button {
+    flex: 1;
+    background: none;
+    border: none;
+    font-size: 18px;
+    padding: 15px 0;
+    cursor: pointer;
+    color: gray;
+    font-weight: bold;
+    position: relative;
+    text-align: center;
+}
+
+.tabs button.active {
+    color: rgba(0, 107, 143, 0.8);
+}
+
+/* 활성화된 탭 아래 선 */
+.tabs button.active::after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 3px;
+    background-color: rgba(0, 107, 143, 0.8);
+    position: absolute;
+    bottom: 0;
+    left: 0;
+}
+
+/* 탭 콘텐츠 스타일 */
+.tab-content {
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* 표 스타일 (재무 정보) */
+.info-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+.info-table th, .info-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+
+.info-table th {
+    background-color: #f8f8f8;
+    font-weight: bold;
+    text-align: center;
+}
+
+/* 리스트 스타일 (관련 뉴스, 동종 업계) */
+.info-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    max-height: 250px !important;
+    overflow-y: auto;
+}
+
+.info-list li {
+    padding: 10px 15px;
+    border-bottom: 1px solid #ddd;
+    font-size: 14px;
+}
+
+.info-list li:last-child {
+    border-bottom: none;
+}
+
+/* 클릭 가능한 아이템 (동종 업계 주식) */
+.clickable-item {
+    font-size: medium !important;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+}
+
+.clickable-item:hover {
+    background-color: #f5f5f5;
+}
+
+.section h3 {
+    margin-top: 5px;
+}

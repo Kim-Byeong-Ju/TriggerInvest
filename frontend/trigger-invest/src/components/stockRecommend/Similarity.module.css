@@ -1,0 +1,152 @@
+/* 🎠 캐러셀 컨테이너 */
+.carouselContainer {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    border-radius: 12px;
+    padding: 15px 0;
+    overflow: hidden;
+}
+
+/* 📜 캐러셀 내부 */
+.carouselWrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+/* 📌 캐러셀 버튼 */
+.carouselButton {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgb(211, 211, 211, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: background 0.3s, transform 0.2s;
+    z-index: 10;
+}
+
+.left {
+    left: 10px;
+}
+
+.right {
+    right: 10px;
+}
+
+/* 버튼 호버 효과 */
+.carouselButton:hover {
+    background: rgb(211, 211, 211, 0.9);
+
+}
+
+/* 📦 종목 카드 */
+.stockCard {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 180px;
+    flex: 0 0 auto;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 107, 143, 0.3);
+    cursor: pointer;
+}
+
+/* 🏆 순위 배지 스타일 (카드 좌측 상단) */
+.rankBadge {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 107, 143, 0.9);
+    color: white;
+    font-size: 14px;
+    font-weight: bold;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+/* 종목 카드 호버 효과 */
+.stockCard:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 107, 143, 0.3);
+}
+
+/* 종목명 스타일 */
+.stockTitle {
+    font-size: 20px;
+    margin-top: 40px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    /* color: rgba(0, 107, 143, 0.9); */
+    word-break: break-word;
+}
+
+/* 업종 텍스트 */
+.stockIndustry {
+    font-size: 15px;
+    color: rgba(0, 107, 143, 0.8);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* 설명 텍스트 */
+.stockDescription {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    white-space: normal;
+}
+
+/* 유사도 정보 */
+.stockSimilarity {
+    font-size: 14px;
+    color: rgba(0, 107, 143, 0.9);
+    font-weight: bold;
+}
+
+/* 📱 반응형 - 모바일 대응 */
+@media (max-width: 768px) {
+    .carouselWrapper {
+        padding: 5px 10px;
+    }
+
+    .carouselButton {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .left {
+        left: 5px;
+    }
+
+    .right {
+        right: 5px;
+    }
+}

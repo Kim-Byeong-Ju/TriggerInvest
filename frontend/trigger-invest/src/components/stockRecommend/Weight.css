@@ -1,0 +1,254 @@
+/* 카테고리 태그 컨테이너 */
+.category-tags {
+    display: flex;
+    /* justify-content: center; */
+    /* flex-wrap: wrap; */
+    gap: 10px;
+    margin: 15px 0;
+    overflow-x: auto !important;
+    /* 좌우 스크롤 적용 */
+    white-space: nowrap !important;
+    /* 줄바꿈 방지 */
+    scroll-behavior: smooth !important;
+}
+
+.category-tags {
+    scroll-behavior: smooth;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+
+/* 카테고리 버튼 스타일 */
+.sector-button {
+    padding: 8px 15px !important;
+    border: none;
+    border-radius: 20px;
+    font-size: 14px;
+    cursor: pointer;
+    transition: background 0.3s, color 0.3s;
+    background: #f0f0f0;
+    color: #333;
+    min-width: auto !important;
+    max-width: 100% !important;
+    padding: 10px 15px !important;
+    text-align: center !important;
+    white-space: nowrap !important;
+}
+
+/* ✨ 반짝거리는 애니메이션 효과 */
+@keyframes shimmer {
+    0% {
+        background-position: -100px;
+    }
+
+    100% {
+        background-position: 100px;
+    }
+}
+
+
+/* 🏆 1등 - 금메달 */
+.sector-button.rank-1 {
+    font-size: 16px;
+    font-weight: bold;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.4), rgba(255, 215, 0, 0.2));
+    border: 2px solid #E6B800;
+    color: #856404;
+    position: relative;
+    /* overflow: hidden; */
+}
+
+/* 🥈 2등 - 은메달 */
+.sector-button.rank-2 {
+    font-size: 15px;
+    font-weight: bold;
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.4), rgba(192, 192, 192, 0.2));
+    border: 2px solid #8B8B8B;
+    color: #4B4B4B;
+    position: relative;
+    /* overflow: hidden; */
+}
+
+
+/* 🥉 3등 - 동메달 */
+.sector-button.rank-3 {
+    font-size: 15px;
+    font-weight: bold;
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.4), rgba(205, 127, 50, 0.2));
+    border: 2px solid #8B5A2B;
+    color: #5D4037;
+    position: relative;
+    /* overflow: hidden; */
+}
+
+/* 🏅 순위 강조 아이콘 */
+.sector-button .top-icon {
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    background: white;
+    border-radius: 50%;
+    width: 18px;
+    height: 18px;
+    font-size: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    box-shadow: 0px 2px 5px rgba(0, 0, 0, 0.2);
+}
+
+
+/* 선택된 카테고리 (기존 파란색 유지) */
+.sector-button.active {
+    background: rgba(0, 107, 143, 0.8) !important;
+    color: white;
+}
+
+/* 아이콘과 텍스트 정렬 */
+.sector-button span {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 5px !important;
+}
+
+/* 선택된 카테고리 */
+.sector-button.active {
+    background: #3b82f6;
+    color: white;
+}
+
+/* 호버 효과 */
+.sector-button:hover {
+    background: #e0e0e0;
+}
+
+/* 기존 캐러셀 유지 */
+.carousel-container {
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    margin: auto;
+    border-radius: 12px;
+    padding: 15px 0;
+    overflow: hidden; /* 내부 요소가 넘치지 않도록 설정 */
+}
+
+.carousel-wrapper {
+    display: flex;
+    overflow-x: auto;
+    scroll-behavior: smooth;
+    gap: 20px;
+    padding: 10px 20px;
+    white-space: nowrap;
+}
+
+/* 캐러셀 버튼 위치 수정 */
+.carousel-button {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgb(211, 211, 211, 0.5);
+    color: white;
+    border: none;
+    cursor: pointer;
+    padding: 12px;
+    border-radius: 50%;
+    font-size: 18px;
+    transition: background 0.3s, transform 0.2s;
+    z-index: 10; /* 항상 위에 위치 */
+}
+
+/* 좌우 버튼 크기 조정 */
+.carousel-button.left {
+    left: 10px;
+}
+
+.carousel-button.right {
+    right: 10px;
+}
+
+/* 버튼 호버 효과 */
+.carousel-button:hover {
+    background: rgb(211, 211, 211, 0.9);
+
+    /* transform: scale(1.1); */
+}
+
+/* 📦 종목 카드 */
+.stock-card {
+    background: white;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 15px;
+    width: 250px;
+    min-width: 250px;
+    max-width: 250px;
+    min-height: 150px; /* 높이를 일정하게 조정 */
+    flex: 0 0 auto;
+    text-align: center;
+    transition: 0.3s ease-in-out;
+    overflow: hidden;
+    position: relative;
+    border: 1px solid rgba(0, 107, 143, 0.3);
+    cursor: pointer;
+}
+
+/* 종목 카드 호버 효과 */
+.stock-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 6px 12px rgba(0, 107, 143, 0.3);
+}
+
+/* 종목명 스타일 */
+.stock-card h3 {
+    font-size: 20px;
+    margin-bottom: 8px;
+    font-weight: bold;
+    /* color: rgba(0, 107, 143, 0.9); */
+    word-break: break-word;
+}
+
+/* 업종 텍스트 */
+.stock-industry {
+    font-size: 14px;
+    color: rgba(0, 107, 143, 0.8);
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+/* 설명 텍스트 */
+.stock-description {
+    font-size: 14px;
+    color: #555;
+    line-height: 1.4;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    word-break: break-word;
+    white-space: normal;
+}
+
+/* 📱 반응형 - 모바일 대응 */
+@media (max-width: 768px) {
+    .carousel-wrapper {
+        padding: 5px 10px;
+    }
+
+    .carousel-button {
+        padding: 10px;
+        font-size: 16px;
+    }
+
+    .carousel-button.left {
+        left: 5px;
+    }
+
+    .carousel-button.right {
+        right: 5px;
+    }
+}

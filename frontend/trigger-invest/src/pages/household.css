@@ -1,0 +1,65 @@
+.household-page {
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* 수평 중앙 정렬 */
+  align-items: center; /* 수직 중앙 정렬 */
+  height: 100%; /* 화면 전체 높이 */
+  padding-bottom: 15%;
+  margin: 170px 15%;
+}
+
+/* 제목과 돋보기 아이콘 컨테이너 */
+.title-container {
+  width: 100%;
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  margin-bottom: 30px; /* 기존 50px → 30px로 줄임 */
+}
+
+.title {
+  display: flex;
+  align-items: center; /* 세로 정렬 */
+  justify-content: flex-start; /* 수평 정렬 (왼쪽 정렬) */
+  font-size: 24px;
+  font-weight: bold;
+  margin-left: 20px; /* 왼쪽 여백 추가 (필요 시) */
+}
+
+.title svg {
+  margin-left: 10px; /* 아이콘과 텍스트 사이 간격 조정 */
+  cursor: pointer;
+}
+
+/* 돋보기 아이콘 스타일 */
+.search-icon {
+  font-size: 18px; /* 아이콘 크기 */
+  margin-left: 20px; /* 제목과 간격 */
+  color: #555; /* 기본 색상 */
+  cursor: pointer;
+  transition: all 0.3s ease-in-out;
+
+  /* 🔹 테두리 스타일 추가 */
+  border: 2px solid #555;
+  border-radius: 10px;
+  padding: 6px;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 25px;
+  height: 25px;
+}
+
+/* 🔹 호버 시 스타일 변경 */
+.search-icon:hover {
+  color: #004d66;
+  border-color: #004d66;
+  background-color: rgba(0, 107, 143, 0.1);
+}
+
+/* Calendar 스타일 */
+.household-page .calendar {
+  width: 100%;
+  height: 100%;
+}

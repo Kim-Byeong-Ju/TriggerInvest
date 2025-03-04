@@ -1,0 +1,123 @@
+/* 네비게이션 바 */
+.nav {
+  background-color: rgba(0, 107, 143, 0.9);
+  padding: 12px 0;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+  position: fixed;
+  width: 100%;
+  top: 0;
+  left: 0;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  height: 65px; /* 높이 증가 */
+}
+
+/* 컨테이너 */
+.nav-container {
+  display: flex;
+  align-items: center;
+  width: 90%;
+  max-width: 1200px;
+}
+
+/* 로고 스타일 */
+.nav-logo {
+  display: flex;
+  align-items: center;
+  font-size: 30px; /* 폰트 크기 증가 */
+  font-weight: bold;
+  color: white;
+  cursor: pointer;
+  margin-right: auto; /* 왼쪽 정렬 */
+}
+
+.nav-logo-img {
+  height: 70px; /* 아이콘 크기 증가 */
+  margin-right: 12px;
+}
+
+.nav-logo-text {
+  font-size: 30px; /* "Trigger" 크기 증가 */
+  font-weight: bold;
+  font-style: italic;
+}
+
+/* 네비게이션 메뉴 */
+.nav-menu {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  flex-grow: 1; /* 중앙 정렬을 위한 flex 설정 */
+  gap: 80px; /* 메뉴 간격 유지 */
+  margin: 0;
+  padding: 0;
+}
+
+/* 메뉴 항목 */
+.nav-menu li {
+  display: inline;
+}
+
+/* 링크 스타일 */
+.nav-menu li a {
+  color: white;
+  text-decoration: none;
+  font-size: 20px; /* 폰트 크기 증가 */
+  font-weight: bold; /* 가계부와 종목 추천 Bold 처리 */
+  padding: 8px 14px;
+  transition: 0.3s ease-in-out;
+}
+
+.nav-menu li a:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+/* 로그인 버튼 */
+.nav-login {
+  margin-left: auto; /* 오른쪽 정렬 */
+}
+
+.login-btn, .logout-btn {
+  color: white;
+  text-decoration: none;
+  font-size: 18px;
+  padding: 8px 12px;
+  transition: 0.3s ease-in-out;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.login-btn:hover, .logout-btn:hover {
+  background-color: rgba(255, 255, 255, 0.2);
+  border-radius: 5px;
+}
+
+/* 반응형 (모바일) */
+@media (max-width: 768px) {
+  .nav {
+    height: 65px;
+  }
+
+  .nav-menu {
+    gap: 40px;
+  }
+
+  .nav-menu li a {
+    font-size: 18px; /* 모바일에서도 굵게 */
+  }
+
+  .login-btn, .logout-btn {
+    font-size: 16px;
+  }
+
+  .nav-logo-img {
+    height: 40px; /* 모바일에서도 로고 크기 조정 */
+  }
+
+  .nav-logo-text {
+    font-size: 24px;
+  }
+}

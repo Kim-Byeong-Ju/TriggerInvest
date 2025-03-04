@@ -1,0 +1,98 @@
+/* 캘린더 컨테이너 */
+.calendar {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  background: white;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 캘린더 스타일 */
+.fc {
+  font-family: 'Arial', sans-serif;
+}
+
+/* 캘린더 헤더 툴바 */
+.fc-header-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+/* 날짜 셀 */
+.fc-daygrid-day {
+  transition: background 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+.fc-daygrid-day:hover {
+  background: rgba(0, 107, 143, 0.1);
+}
+
+/* 요일 스타일 */
+.fc-day-sat {
+  color: blue !important; /* 토요일 - 파란색 */
+}
+
+.fc-day-sun {
+  color: red !important; /* 일요일 - 빨간색 */
+}
+
+/* 날짜별 내역 스타일 */
+.fc-event {
+  background-color: rgba(0, 107, 143, 0.65) !important; /* 메인 색상 (투명도 높임) */
+  border: none; /* 테두리는 메인 색상 */
+  color: #004d66 !important;
+  padding: 5px 8px;
+  border-radius: 6px;
+  font-size: 14px;
+  /* font-weight: bold; */
+}
+
+/* '...' 추가 내역 표시 */
+.fc-event.more-events {
+  background-color: rgba(0, 107, 143, 0.1) !important;
+  border: 2px dashed rgba(0, 107, 143, 0.9) !important; /* 점선 테두리 */
+  font-weight: bold;
+  color: #004d66 !important;
+}
+
+/* 항목 추가 버튼 */
+.fc-customButton-button {
+  background-color: rgba(0, 107, 143, 0.9);
+  color: white;
+  border: none;
+  padding: 0px 15px !important;
+  font-size: 28px !important;
+  border-radius: 10px !important;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+}
+
+.fc-customButton-button:hover {
+  background-color: rgba(0, 107, 143, 1);
+}
+
+/* 반응형 (모바일 최적화) */
+@media (max-width: 768px) {
+  .calendar {
+    padding: 15px;
+  }
+
+  .total-expense {
+    font-size: 18px;
+  }
+
+  .fc-header-toolbar {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .fc-customButton-button {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}

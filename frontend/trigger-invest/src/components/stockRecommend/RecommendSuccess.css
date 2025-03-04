@@ -1,0 +1,126 @@
+/* 추천 종목 컨테이너 */
+.recommend-container {
+  text-align: center !important;
+  padding: 20px !important;
+  max-width: 1200px !important;
+  margin: auto !important;
+  position: relative !important;
+  border-radius: 10px !important;
+  background: white !important;
+}
+
+/* 타이틀 */
+.recommend-container h2 {
+  font-size: 22px !important;
+  font-weight: bold !important;
+  color: rgba(0, 107, 143, 0.9) !important;
+  margin-bottom: 20px !important;
+}
+
+/* 토글 버튼 컨테이너 */
+.toggle-buttons {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: space-between !important;
+  /* background: rgba(0, 107, 143, 0.2) !important; */
+  border-radius: 30px !important;
+  padding: 5px !important;
+  width: 280px !important;
+  margin: 20px auto !important;
+  position: relative !important;
+  overflow: hidden !important;
+  border: 2px solid rgba(0, 107, 143, 0.9) !important;
+  margin-bottom: 75px !important;
+}
+
+/* 활성화 배경 슬라이드 효과 */
+.toggle-background {
+  position: absolute !important;
+  width: 50% !important;
+  height: 100% !important;
+  background: rgba(0, 107, 143, 0.9) !important;
+  border-radius: 30px !important;
+  transition: transform 0.3s ease-in-out !important;
+}
+
+/* 토글 버튼 스타일 */
+.toggle-buttons button {
+  border: none !important;
+  background: transparent !important;
+  padding: 10px 20px !important;
+  font-size: 16px !important;
+  font-weight: bold !important;
+  color: #555 !important;
+  cursor: pointer !important;
+  transition: color 0.3s !important;
+  border-radius: 30px !important;
+  position: relative !important;
+  z-index: 1 !important;
+  width: 50% !important;
+}
+
+/* 활성화된 버튼 스타일 */
+.toggle-buttons button.active {
+  color: white !important;
+}
+
+/* 토글 배경 이동 애니메이션 */
+.toggle-buttons[data-mode="weight"] .toggle-background {
+  transform: translateX(-5%) !important;
+}
+
+.toggle-buttons[data-mode="similarity"] .toggle-background {
+  transform: translateX(100%) !important;
+}
+
+/* 종목 리스트 테이블 */
+.recommend-table {
+  width: 100% !important;
+  border-collapse: collapse !important;
+  margin-top: 20px !important;
+}
+
+/* 테이블 헤더 */
+.recommend-table th {
+  background-color: rgba(0, 107, 143, 0.9) !important;
+  color: white !important;
+  padding: 12px !important;
+  text-align: center !important;
+  border: 1px solid rgba(0, 107, 143, 1) !important;
+}
+
+/* 테이블 내용 */
+.recommend-table td {
+  padding: 10px !important;
+  border: 1px solid rgba(0, 107, 143, 0.5) !important;
+  text-align: center !important;
+  font-weight: bold !important;
+  color: black !important;
+}
+
+/* 테이블 홀수 행 배경색 */
+.recommend-table tr:nth-child(odd) {
+  background-color: rgba(0, 107, 143, 0.1) !important;
+}
+
+/* 테이블 호버 효과 */
+.recommend-table tr:hover {
+  background-color: rgba(0, 107, 143, 0.2) !important;
+}
+
+/* 반응형 조정 */
+@media (max-width: 768px) {
+  .recommend-container {
+    padding: 15px !important;
+  }
+
+  .toggle-buttons {
+    width: 180px !important;
+  }
+
+  .recommend-table th,
+  .recommend-table td {
+    padding: 8px !important;
+    font-size: 14px !important;
+  }
+}
